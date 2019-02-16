@@ -35,7 +35,7 @@ fi
 
 os=$(awk -F '=' '$1 ~ /^ID$/ {print $2}' /etc/*release*)
 
-if [ "$os"="centos" ]
+if [ "$os" = "centos" ]
 then
 	# Check if docker exists
 	docker=$(which docker)
@@ -59,7 +59,7 @@ else
 	fi	
 fi 
 
-if [ $? -eq 0 ] && [ -f "$user/.ssh/authorized_keys" ]
+if [ $? -eq 0 ] && [ -f "$home/.ssh/authorized_keys" ]
 then 
 	usermod -aG docker $user
 	if [ $? -gt 0 ]
@@ -72,6 +72,8 @@ then
 		then
 			echo "$user successfully added to the docker group"
 		fi
+	else
+		echo "$user is added to docker group"
 	fi
 else
 	echo "Error: check if docker is installed and $user exists"
