@@ -52,7 +52,8 @@ else
 	if [ $? -gt 0 ]
 	then
 		echo "Installing docker..."
-		apt-get install docker -y
+		apt-get install docker.io -y
+		apt-get install docker-compose -y
 	else
 		echo "docker already in $(which docker), skipping.."
 	fi	
