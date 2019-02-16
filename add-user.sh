@@ -33,7 +33,7 @@ else
 	echo "$home directory exists, continuing..."
 fi
 
-os=$(awk '$1 ~ /^ID$/ {print $2}' /etc/*release*)
+os=$(awk -F '=' '$1 ~ /^ID$/ {print $2}' /etc/*release*)
 
 if [ "$os"="centos" ]
 then
